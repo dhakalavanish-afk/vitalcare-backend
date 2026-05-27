@@ -12,7 +12,7 @@ const visitRoutes = require('./visits');
 const leadsRoutes = require('./leads');
 const app = express ();
 app.use(helmet());
-app.use(cors({ 
+app.use(cors({ origin: ['https://rivaanhealth.com', 'https://app.rivaanhealth.com', 'https://admin.rivaanhealth.com', 'https://nurse.rivaanhealth.com'], credentials: true }));
   origin: [process.env.FRONTEND_URL, 'https://app.rivaanhealth.com', 'https://rivaanhealth.com'],
   credentials: true 
 }));
