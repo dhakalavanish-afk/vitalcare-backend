@@ -12,7 +12,10 @@ const visitRoutes = require('./visits');
 const leadsRoutes = require('./leads');
 const app = express ();
 app.use(helmet());
-app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+app.use(cors({ 
+  origin: [process.env.FRONTEND_URL, 'https://app.rivaanhealth.com', 'https://rivaanhealth.com'],
+  credentials: true 
+}));
 app.use(express.json());
 
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
