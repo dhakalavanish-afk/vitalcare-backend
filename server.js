@@ -10,7 +10,7 @@ const nurseRoutes = require('./nurses');
 const subscriptionRoutes = require('./subscriptions');
 const visitRoutes = require('./visits');
 const leadsRoutes = require('./leads');
-
+const app = express ();
 app.use(helmet());
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 app.use(express.json());
