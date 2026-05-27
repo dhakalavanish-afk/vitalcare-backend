@@ -10,7 +10,9 @@ const nurseRoutes = require('./nurses');
 const subscriptionRoutes = require('./subscriptions');
 const visitRoutes = require('./visits');
 const leadsRoutes = require('./leads');
-const app = express ();
+
+const app = express();
+
 app.use(helmet());
 app.use(cors({ origin: ['https://rivaanhealth.com', 'https://app.rivaanhealth.com', 'https://admin.rivaanhealth.com', 'https://nurse.rivaanhealth.com'], credentials: true }));
 app.use(express.json());
@@ -22,13 +24,16 @@ app.use('/api/auth', authRoutes);
 app.use('/api/members', memberRoutes);
 app.use('/api/nurses', nurseRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
-app.use('/api/visits', visitRoutes);app.use('/api/leads', leadsRoutes);
+app.use('/api/visits', visitRoutes);
+app.use('/api/leads', leadsRoutes);
+
 app.get('/health', (req, res) => {
-  res.json({ status: 'VitalCare API is running', timestamp: new Date() });
+res.json({ status: 'VitalCare API is running', timestamp: new Date() });
 });
 
 app.use((err, req, res, next) => {
-  res.status(err.status || 500).json({ success: false, message: err.message || 'Internal server error' });
+console.error(err.stack);
+res.status(err.status || 500).json({ success: false, message: err.message || 'Internal server error' });
 });
 
 const PORT = process.env.PORT || 3000;
