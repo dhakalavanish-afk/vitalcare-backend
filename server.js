@@ -9,8 +9,7 @@ const memberRoutes = require('./members');
 const nurseRoutes = require('./nurses');
 const subscriptionRoutes = require('./subscriptions');
 const visitRoutes = require('./visits');
-
-const app = express();
+const leadsRoutes = require('./routes/leads');const app = express();
 
 app.use(helmet());
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
@@ -23,8 +22,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/members', memberRoutes);
 app.use('/api/nurses', nurseRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
-app.use('/api/visits', visitRoutes);
-
+app.use('/api/visits', visitRoutes);app.use('/api/leads', leadsRoutes);
 app.get('/health', (req, res) => {
   res.json({ status: 'VitalCare API is running', timestamp: new Date() });
 });
