@@ -10,7 +10,7 @@ const nurseRoutes = require('./nurses');
 const subscriptionRoutes = require('./subscriptions');
 const visitRoutes = require('./visits');
 const leadsRoutes = require('./leads');
-
+const applicationsRoutes = require('./applications');
 const app = express();
 
 app.use(helmet());
@@ -26,7 +26,7 @@ app.use('/api/nurses', nurseRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/visits', visitRoutes);
 app.use('/api/leads', leadsRoutes);
-
+app.use('/api/applications', applicationsRoutes);
 app.get('/health', (req, res) => {
 res.json({ status: 'VitalCare API is running', timestamp: new Date() });
 });
